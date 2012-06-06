@@ -36,6 +36,8 @@ Feature: One-shot verification of AddressBook
     Then the response should contain "address:"
     And I type ".*jia"
     Then the response should contain "deleted"
+    When I type "!quit"
+    Then the exit status should be 0
 
   Scenario: Add/Search two entries
     Given I run `java -jar ../../target/ab-1.0.0.jar` interactively
@@ -62,6 +64,8 @@ Feature: One-shot verification of AddressBook
     Then the response should contain "name:"
     And I type "xiao.*"
     Then the response should match /xiaoming.*xiaohong/
+    When I type "!quit"
+    Then the exit status should be 0
 
   Scenario: Get help message and quit
     Given I run `java -jar ../../target/ab-1.0.0.jar` interactively
