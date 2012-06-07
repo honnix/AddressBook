@@ -1,7 +1,5 @@
 require 'aruba/api'
 
-World(Aruba::Api)
-
 def response
   only_processes.inject('') { |out, ps| out << ps.stdout(@aruba_keep_ansi) }
 end
