@@ -1,9 +1,11 @@
 Feature: One-shot verification of AddressBook
   Launch ab-1.0.0.jar, and execute basic features verification.
 
-  Scenario: Add/Search/Delete one entry
+  Background: Started up
     Given I run `java -jar ../../target/ab-1.0.0.jar` interactively
     And the response should exactly contain "ab> "
+
+  Scenario: Add/Search/Delete one entry
     When I type "add"
     Then the response should contain "name:"
     And I type "xiaoming"
@@ -40,8 +42,6 @@ Feature: One-shot verification of AddressBook
     Then the exit status should be 0
 
   Scenario: Add/Search two entries
-    Given I run `java -jar ../../target/ab-1.0.0.jar` interactively
-    And the response should exactly contain "ab> "
     When I type "add"
     Then the response should contain "name:"
     And I type "xiaoming"
@@ -68,8 +68,6 @@ Feature: One-shot verification of AddressBook
     Then the exit status should be 0
 
   Scenario: Get help message and quit
-    Given I run `java -jar ../../target/ab-1.0.0.jar` interactively
-    And the response should exactly contain "ab> "
     When I type "!help"
     Then the response should contain "add|search|delete|!help|!quit"
     When I type "!invalid"
